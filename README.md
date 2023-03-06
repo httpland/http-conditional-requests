@@ -34,10 +34,10 @@ import { assertSpyCalls, spy } from "https://deno.land/std/testing/mock.ts";
 const selectedRepresentation = new Response("<body>", {
   headers: { etag: "<etag>" },
 });
-const selectRepresentation = spy((request: Request) => selectedRepresentation);
+const selectRepresentation = spy(() => selectedRepresentation);
 const middleware = conditionalRequests(selectRepresentation);
 const conditionalRequest = new Request("<uri>", {
-  headers: { "if-none-match": "<etag" },
+  headers: { "if-none-match": "<etag>" },
 });
 const handler = spy(() => selectedRepresentation);
 
