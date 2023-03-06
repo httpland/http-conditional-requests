@@ -1,4 +1,4 @@
-# http-preconditions
+# http-conditional-requests
 
 HTTP Conditional Request middleware for standard `Request` and `Response`.
 
@@ -20,22 +20,31 @@ For a definition of Universal HTTP middleware, see the
 
 Middleware factory is exported by default.
 
-To evaluate precondition, you need to provide a function to retrieve the target
-resource.
+To evaluate precondition, you need to provide a function to retrieve the
+selected representation.
+
+The following example evaluates the `If-None-Match` precondition and controls
+the handler.
 
 ```ts
-import preconditions from "https://deno.land/x/http_content_minify@$VERSION/mod.ts";
+import conditionalRequests from "https://deno.land/x/http_conditional_requests@$VERSION/mod.ts";
 import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
 import { assertSpyCalls, spy } from "https://deno.land/std/testing/mock.ts";
 
-const request = new Request("<uri>", { headers: { "if-none-match": "<etag" } });
-const targetResource = new Response("<body>", { headers: { etag: "<etag>" } });
-const middleware = preconditions((request) => targetResource);
-const handler = spy(() => targetResource);
+const selectedRepresentation = new Response("<body>", {
+  headers: { etag: "<etag>" },
+});
+const selectRepresentation = spy((request: Request) => selectedRepresentation);
+const middleware = conditionalRequests(selectRepresentation);
+const conditionalRequest = new Request("<uri>", {
+  headers: { "if-none-match": "<etag" },
+});
+const handler = spy(() => selectedRepresentation);
 
-const response = await middleware(request, handler);
+const response = await middleware(conditionalRequest, handler);
 
 assertSpyCalls(handler, 0);
+assertSpyCalls(selectRepresentation, 1);
 assertEquals(response.status, 304);
 ```
 
