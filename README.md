@@ -1,6 +1,6 @@
 # http-conditional-requests
 
-HTTP Conditional Request middleware for standard `Request` and `Response`.
+HTTP Conditional Request middleware for Fetch API.
 
 ## What
 
