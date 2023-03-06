@@ -5,7 +5,7 @@ import {
   RepresentationHeader,
   Status,
 } from "../deps.ts";
-import { ifModifiedSince } from "../util.ts";
+import { ifModifiedSince } from "./util.ts";
 import type { EvaluateCallback, Precondition } from "../types.ts";
 
 const evaluate: EvaluateCallback = (request, response, context) => {

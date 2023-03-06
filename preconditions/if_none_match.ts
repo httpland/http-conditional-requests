@@ -6,7 +6,7 @@ import {
   Status,
 } from "../deps.ts";
 import type { EvaluateCallback, Precondition } from "../types.ts";
-import { ifNoneMatch } from "../util.ts";
+import { ifNoneMatch } from "./util.ts";
 
 const evaluate: EvaluateCallback = (_, response, context) => {
   const etag = response.headers.get(RepresentationHeader.ETag);
