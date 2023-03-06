@@ -16,7 +16,7 @@ export const makeOptions = (version: string): BuildOptions => ({
   package: {
     name: "@httpland/http-conditional-requests",
     version,
-    description: "HTTP conditional requests middleware for Fetch API",
+    description: "HTTP Conditional Requests middleware for Fetch API",
     keywords: [
       "http",
       "conditional-request",
