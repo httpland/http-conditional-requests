@@ -1,6 +1,15 @@
 # http-conditional-requests
 
-HTTP Conditional Request middleware for Fetch API.
+HTTP Conditional Requests middleware for Fetch API.
+
+[![deno land](http://img.shields.io/badge/available%20on-deno.land/x-lightgrey.svg?logo=deno)](https://deno.land/x/http_conditional_requests)
+[![deno doc](https://doc.deno.land/badge.svg)](https://doc.deno.land/https/deno.land/x/http_conditional_requests/mod.ts)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/httpland/http-conditional-requests)](https://github.com/httpland/http-conditional-requests/releases)
+[![codecov](https://codecov.io/gh/httpland/http-conditional-requests/branch/main/graph/badge.svg?token=nan4NUrx1V)](https://codecov.io/gh/httpland/http-conditional-requests)
+[![GitHub](https://img.shields.io/github/license/httpland/http-conditional-requests)](https://github.com/httpland/http-conditional-requests/blob/main/LICENSE)
+
+[![test](https://github.com/httpland/http-conditional-requests/actions/workflows/test.yaml/badge.svg)](https://github.com/httpland/http-conditional-requests/actions/workflows/test.yaml)
+[![NPM](https://nodei.co/npm/@httpland/http-conditional-requests.png?mini=true)](https://nodei.co/npm/@httpland/http-conditional-requests/)
 
 ## What
 
