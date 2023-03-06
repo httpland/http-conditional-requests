@@ -67,9 +67,10 @@ export default function conditionalRequests(
   selectRepresentation: SelectPresentationCallback,
   options?: Options,
 ): Middleware {
+  // TODO(miyauci): use toSort
   const preconditions = Array.from(
     options?.preconditions ?? defaultPreconditions,
-  ).toSorted(ascendPrecondition);
+  ).sort(ascendPrecondition);
 
   return async (request, next) => {
     if (isNotSelectionOrModificationMethod(request.method)) {
