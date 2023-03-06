@@ -51,17 +51,16 @@ assertEquals(response.status, 304);
 ## Preconditions
 
 [RFC 9110, 13.1. Preconditions](https://www.rfc-editor.org/rfc/rfc9110#section-13.1)
-compliant and supports the following precondition
+compliant and supports the following precondition:
 
-- [If-None-Match](#if-none-match)
+- If-Match
+- If-None-Match
+- If-Modified-Since
+- If-Unmodified-Since
 
-### If-None-Match
-
-If an `if-none-match` header is present in the request, a weak comparison is
-made with the ETag header of the target resource.
-
-If `if-none-match` evaluates to `false`, the handler is not executed and returns
-a `304` status code response.
+If multiple precondition headers are present, precondition is processed
+according to
+[precedence](https://www.rfc-editor.org/rfc/rfc9110.html#section-13.2.2).
 
 ## Effects
 
@@ -75,9 +74,15 @@ Middleware will effect following:
 
 Middleware will execute only if the following conditions are met:
 
-- The Preconditions header exists
+- The precondition header exists
+  - `If-Match`
+    - The `ETag` header exist
   - `If-None-Match`
-    - The `ETag` header **does not exist**
+    - The `ETag` header exist
+  - `If-Modified-Since`
+    - The `Last-Modified` header exist
+  - `If-Unmodified-Since`
+    - The `Last-Modified` header exist
 
 ## License
 
